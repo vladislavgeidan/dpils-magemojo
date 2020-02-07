@@ -1,1 +1,0 @@
-/var/www/public/lib/web/mage/backend/button.js

@@ -1,1 +1,0 @@
-/var/www/public/lib/web/MutationObserver.js
