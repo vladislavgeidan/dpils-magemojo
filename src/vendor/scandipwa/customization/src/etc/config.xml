@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category ScandiPWA
+ * @package ScandiPWA\Customization
+ * @author Alfreds Genkins <info@scandiweb.com>
+ * @copyright Copyright (c) 2015 Scandiweb, Ltd (http://scandiweb.com)
+ * @license http://opensource.org/licenses/afl-3.0.php Academic Free License (AFL 3.0)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <color_customization>
+            <enable_color_customization>
+                <enable_custom_colors>0</enable_custom_colors>
+            </enable_color_customization>
+            <primary_colors>
+                <primary_base_color>f26323</primary_base_color>
+                <primary_dark_color>d1490c</primary_dark_color>
+                <primary_light_color>f69e77</primary_light_color>
+            </primary_colors>
+            <secondary_colors>
+                <secondary_base_color>f3f3f3</secondary_base_color>
+                <secondary_dark_color>949494</secondary_dark_color>
+                <secondary_light_color>f3f3f3d1</secondary_light_color>
+            </secondary_colors>
+        </color_customization>
+        <content_customization>
+
+        </content_customization>
+    </default>
+</config>

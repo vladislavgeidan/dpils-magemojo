@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category  ScandiPWA
+ * @package   ScandiPWA\UrlrewriteGraphql
+ * @author    Vladimirs Mihnovics <info@scandiweb.com>
+ * @copyright Copyright (c) 2019 Scandiweb, Ltd (http://scandiweb.com)
+ * @license   OSL-3.0
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="ScandiPWA_UrlrewriteGraphQl">
+        <sequence>
+            <module name="Magento_UrlRewrite"/>
+            <module name="Magento_UrlRewriteGraphQl"/>
+        </sequence>
+    </module>
+</config>

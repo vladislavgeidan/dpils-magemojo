@@ -1,0 +1,1 @@
+/var/www/public/vendor/msp/recaptcha/view/frontend/web/js/registry.js

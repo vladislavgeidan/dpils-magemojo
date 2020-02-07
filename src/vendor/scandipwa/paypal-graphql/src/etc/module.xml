@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * ScandiPWA_PayPalGraphQl
+ *
+ * @category    Scandiweb
+ * @package     ScandiPWA_PayPalGraphQl
+ * @author      Artjoms Travkovs <info@scandiweb.com>
+ * @copyright   Copyright (c) 2019 Scandiweb, Ltd (https://scandiweb.com)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="ScandiPWA_PayPalGraphQl" setup_version="1.0.0">
+        <sequence>
+            <module name="Magento_PaypalGraphQl"/>
+        </sequence>
+    </module>
+</config>

@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category ScandiPWA
+ * @package ScandiPWA\Customization
+ * @author Alfreds Genkins <info@scandiweb.com>
+ * @copyright Copyright (c) 2015 Scandiweb, Ltd (http://scandiweb.com)
+ * @license http://opensource.org/licenses/afl-3.0.php Academic Free License (AFL 3.0)
+ */
+-->
+<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
+    <section id="color_customization" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+        <label>Color customization</label>
+        <tab>scandipwa</tab>
+        <resource>ScandiPWA_Customization::scandipwa_config</resource>
+
+        <group id="enable_color_customization" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Enable color customization</label>
+            <attribute type="expanded">1</attribute>
+
+            <field id="enable_custom_colors" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Allow custom colors</label>
+                <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+            </field>
+        </group>
+
+        <group id="primary_colors" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Primary colors</label>
+
+            <depends>
+                <field id="color_customization/enable_color_customization/enable_custom_colors">1</field>
+            </depends>
+
+            <field id="primary_base_color" translate="label" type="text" sortOrder="101" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Base</label>
+                <comment>Button, Checkbox color</comment>
+                <frontend_model>ScandiPWA\Customization\Block\Adminhtml\Config\Color</frontend_model>
+            </field>
+
+            <field id="primary_dark_color" translate="label" type="text" sortOrder="102" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Hover</label>
+                <comment>Hover effects (i.e buttons)</comment>
+                <frontend_model>ScandiPWA\Customization\Block\Adminhtml\Config\Color</frontend_model>
+            </field>
+
+            <field id="primary_light_color" translate="label" type="text" sortOrder="103" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Highlight</label>
+                <comment>Accent background (i.e. mini-cart)</comment>
+                <frontend_model>ScandiPWA\Customization\Block\Adminhtml\Config\Color</frontend_model>
+            </field>
+        </group>
+
+        <group id="secondary_colors" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Secondary colors (preferably grey):</label>
+
+            <depends>
+                <field id="color_customization/enable_color_customization/enable_custom_colors">1</field>
+            </depends>
+
+            <field id="secondary_base_color" translate="label" type="text" sortOrder="201" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Base</label>
+                <comment>Breadcrumbs background, sections on product page</comment>
+                <frontend_model>ScandiPWA\Customization\Block\Adminhtml\Config\Color</frontend_model>
+            </field>
+
+            <field id="secondary_dark_color" translate="label" type="text" sortOrder="202" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Hover</label>
+                <comment>Hover effects (i.e. in checkout payments)</comment>
+                <frontend_model>ScandiPWA\Customization\Block\Adminhtml\Config\Color</frontend_model>
+            </field>
+
+            <field id="secondary_light_color" translate="label" type="text" sortOrder="203" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Highlight</label>
+                <comment>Accent backgrounds (i.e. even tables rows)</comment>
+                <frontend_model>ScandiPWA\Customization\Block\Adminhtml\Config\Color</frontend_model>
+            </field>
+        </group>
+    </section>
+</include>

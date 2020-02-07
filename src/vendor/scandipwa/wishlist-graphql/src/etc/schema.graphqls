@@ -1,0 +1,31 @@
+
+# ScandiPWA - Progressive Web App for Magento
+#
+# Copyright © Scandiweb, Inc. All rights reserved.
+# See LICENSE for license details.
+#
+# @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+# @package scandipwa/wishlist-graphql
+# @link https://github.com/scandipwa/wishlist-graphql
+#
+# Copyright © Magento, Inc. All rights reserved.
+# See COPYING.txt for license details.
+
+type Mutation {
+    saveWishlistItem(wishlistItem: WishlistItemInput!): WishlistItem @doc(description: "Saves wishlist item") @resolver(class:"\\ScandiPWA\\WishlistGraphQl\\Model\\Resolver\\SaveProductToWishlist")
+    removeProductFromWishlist(itemId: ID!): Boolean @doc(description: "Removes product from wishlist") @resolver(class:"\\ScandiPWA\\WishlistGraphQl\\Model\\Resolver\\RemoveProductFromWishlist")
+    moveWishlistToCart: Boolean @doc(description: "Moves items from wishlist to cart") @resolver(class:"ScandiPWA\\WishlistGraphQl\\Model\\Resolver\\MoveWishlistToCart")
+    clearWishlist: Boolean @doc(description: "Clears wishlist") @resolver(class: "ScandiPWA\\WishlistGraphQl\\Model\\Resolver\\ClearWishlist")
+}
+
+input WishlistItemInput {
+    sku: ID @doc(description: "Sku of the product")
+    item_id: ID @doc(description: "Id of the wishlist item")
+    quantity: Int @doc(description: "Quantity of the product")
+    description: String @doc(description: "User description of wish list item")
+    product_option: ProductOptionInput @doc(description: "Configurable product options")
+}
+
+extend type WishlistItem {
+    sku: ID @doc(description: "The wish list item's SKU")
+}

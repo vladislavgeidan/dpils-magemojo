@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * ScandiPWA_PayPalGraphQl
+ *
+ * @category    Scandiweb
+ * @package     ScandiPWA_PayPalGraphQl
+ * @author      Artjoms Travkovs <info@scandiweb.com>
+ * @copyright   Copyright (c) 2019 Scandiweb, Ltd (https://scandiweb.com)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="payment_all_paypal" showInDefault="0" showInWebsite="0" showInStore="0">
+            <group id="express_checkout" translate="label comment" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="60">
+                <group id="express_checkout_required" translate="label" showInDefault="1" showInWebsite="1" sortOrder="10">
+                    <group id="express_checkout_required_express_checkout" translate="label" showInDefault="1" showInWebsite="1" sortOrder="10">
+                        <field id="api_client_id" translate="label" type="text" sortOrder="35" showInDefault="1" showInWebsite="1">
+                            <label>API Client ID</label>
+                            <config_path>paypal/wpp/client_id</config_path>
+                            <attribute type="shared">1</attribute>
+                        </field>
+                    </group>
+                </group>
+            </group>
+        </section>
+    </system>
+</config>

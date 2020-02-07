@@ -1,0 +1,19 @@
+# Copyright © ScandiPWA. All rights reserved.
+# See LICENSE for license details.
+
+type Mutation {
+    s_createPaypalExpressToken(input: S_PaypalExpressTokenInput!): PaypalExpressToken @resolver(class: "\\ScandiPWA\\PayPalGraphQl\\Model\\Resolver\\PaypalExpressToken") @doc(description: "Initiates an Express Checkout transaction and receives a token using session-based cart_id. Use this mutation for Express Checkout and Payments Standard payment methods.")
+}
+
+input S_PaypalExpressTokenInput @doc(description: "Defines the attributes required to receive a payment token for Express Checkout and Payments Standard payment methods.") {
+    code: String! @doc(description:"Payment method code")
+    guest_cart_id: String @doc(description:"The unique ID that identifies the guest customer's cart")
+    urls: PaypalExpressUrlsInput! @doc(description:"A set of relative URLs that PayPal uses in response to various actions during the authorization process")
+    use_paypal_credit: Boolean @doc(description: "Indicates whether the buyer clicked the PayPal credit button. The default value is false")
+    express_button: Boolean @doc(description: "Indicates whether the buyer selected the quick checkout button. The default value is false")
+}
+
+extend type StoreConfig {
+    paypal_sandbox_flag: Boolean @doc(description: "PayPal sandbox mode")
+    paypal_client_id: ID @doc(description: "PayPal client ID")
+}

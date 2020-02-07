@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category ScandiPWA
+ * @package ScandiPWA\Customization
+ * @author Alfreds Genkins alfreds@scandiweb.com
+ * @copyright Copyright (c) 2015 Scandiweb, Ltd (http://scandiweb.com)
+ * @license http://opensource.org/licenses/afl-3.0.php Academic Free License (AFL 3.0)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="ScandiPWA_Customization" setup_version="1.0.0">
+        <sequence>
+            <module name="Scandiweb_Core" />
+            <module name="ScandiPWA_Locale" />
+        </sequence>
+    </module>
+</config>

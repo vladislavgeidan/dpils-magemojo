@@ -1,0 +1,1 @@
+/var/www/public/lib/web/mage/apply/scripts.js

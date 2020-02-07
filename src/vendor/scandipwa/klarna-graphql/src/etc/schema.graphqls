@@ -1,0 +1,24 @@
+##
+# ScandiPWA_KlarnaGraphQl
+#
+# @category    ScandiPWA
+# @package     ScandiPWA_KlarnaGraphQl
+# @author      Artjoms Travkovs <info@scandiweb.com>
+# @copyright   Copyright (c) 2018 Scandiweb, Ltd (https://scandiweb.com)
+##
+
+type Mutation {
+    createKlarnaToken(input: KlarnaTokenInput!): String @resolver(class: "\\ScandiPWA\\KlarnaGraphQl\\Model\\Resolver\\KlarnaToken") @doc(description: "Returns Klarna session token")
+}
+
+input KlarnaTokenInput @doc(description: "Defines the attributes required to receive a payment token for Klarna payment method") {
+    guest_cart_id: String @doc(description: "The unique ID that identifies the guest customer's cart")
+}
+
+input PaymentMethodInput {
+    klarna_kp: KlarnaInput
+}
+
+input KlarnaInput {
+    authorization_token: ID!
+}

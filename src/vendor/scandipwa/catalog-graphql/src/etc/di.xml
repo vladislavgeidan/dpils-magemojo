@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * ScandiPWA_CatalogGraphQl
+ *
+ * @category    Scandiweb
+ * @package     ScandiPWA_CatalogGraphQl
+ * @author      Viktors Pliska <info@scandiweb.com>
+ * @copyright   Copyright (c) 2018 Scandiweb, Ltd (https://scandiweb.com)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\CatalogGraphQl\Model\Resolver\Products\FilterArgument\ProductEntityAttributesForAst">
+        <plugin name="ScandiPWA::ProductEntityAttributesForAst" type="ScandiPWA\CatalogGraphQl\Plugin\Resolver\Products\FilterArgument\ProductEntityAttributesForAst" sortOrder="1" disabled="false"/>
+    </type>
+
+    <preference for="Magento\CatalogGraphQl\Model\Resolver\Products\DataProvider\Product\CollectionProcessor\StockProcessor"
+                type="ScandiPWA\CatalogGraphQl\Model\Resolver\Products\DataProvider\Product\CollectionProcessor\StockProcessor" />
+
+    <preference for="Magento\CatalogGraphQl\Model\Resolver\Products\DataProvider\Product\CollectionProcessor\AttributeProcessor"
+                type="ScandiPWA\CatalogGraphQl\Model\Resolver\Products\DataProvider\Product\CollectionProcessor\AttributeProcessor" />
+
+
+    <virtualType name="ScandiPWA\CatalogGraphQl\Model\Search\PageSizeProvider" type="Magento\Search\Model\Search\PageSizeProvider">
+        <arguments>
+            <argument name="pageSizeBySearchEngine" xsi:type="array">
+                <item name="elasticsearch" xsi:type="number">10000</item>
+                <item name="elasticsearch5" xsi:type="number">10000</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="ScandiPWA\CatalogGraphQl\Plugin\Resolver\Products\FilterArgument\ProductEntityAttributesForAst">
+        <arguments>
+            <argument name="attributes" xsi:type="array">
+                <item name="news_to_date" xsi:type="string">news_to_date</item>
+                <item name="category_url_key" xsi:type="string">category_url_key</item>
+                <item name="category_url_path" xsi:type="string">category_url_path</item>
+                <item name="conditions" xsi:type="string">conditions</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Prevent Magento to dynamically build product and category attributes -->
+    <virtualType name="ScandiPWA\CatalogGraphQl\GraphQlSchemaStitching\Reader" type="Magento\Framework\GraphQlSchemaStitching\Common\Reader">
+        <arguments>
+            <argument name="readers" xsi:type="array">
+                <item name="graphql_reader" xsi:type="object">Magento\Framework\GraphQlSchemaStitching\GraphQlReader</item>
+                <item name="productFiltersDynamicAttributeReader" xsi:type="object">ScandiPWA\CatalogGraphQl\Model\Config\ProductAttributeReader</item>
+                <item name="categoryDynamicAttributeReader" xsi:type="object">Magento\CatalogGraphQl\Model\Config\CategoryAttributeReader</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <preference for="Magento\Framework\GraphQlSchemaStitching\Reader"
+                type="ScandiPWA\CatalogGraphQl\GraphQlSchemaStitching\Reader"/>
+    <!-- Prevent Magento to dynamically build product and category attributes -->
+
+    <type name="Magento\CatalogGraphQl\Model\Resolver\Products\Query\Search">
+        <arguments>
+            <argument name="pageSize" xsi:type="object">ScandiPWA\CatalogGraphQl\Model\Search\PageSizeProvider</argument>
+        </arguments>
+    </type>
+
+    <preference for="Magento\CatalogGraphQl\Model\Resolver\Product\MediaGallery\Url"
+                type="ScandiPWA\CatalogGraphQl\Model\Resolver\Product\MediaGallery\Url" />
+
+    <preference for="Magento\CatalogGraphQl\Model\Resolver\Product\MediaGalleryEntries"
+                type="ScandiPWA\CatalogGraphQl\Model\Resolver\Product\MediaGalleryEntries"/>
+
+    <preference for="Magento\CatalogGraphQl\Model\Resolver\Products\SearchResult"
+                type="ScandiPWA\CatalogGraphQl\Model\Resolver\Products\SearchResult"/>
+
+    <preference for="Magento\CatalogGraphQl\Model\Resolver\Products\SearchResultFactory"
+                type="ScandiPWA\CatalogGraphQl\Model\Resolver\Products\SearchResultFactory"/>
+
+    <preference for="Magento\CatalogGraphQl\Model\Resolver\Products"
+                type="ScandiPWA\CatalogGraphQl\Model\Resolver\Products"/>
+
+    <preference for="Magento\CatalogGraphQl\Model\Resolver\Category\Products"
+                type="ScandiPWA\CatalogGraphQl\Model\Resolver\Category\Products"/>
+
+    <preference for="Magento\CatalogGraphQl\Model\Resolver\Products\DataProvider\Product"
+                type="ScandiPWA\CatalogGraphQl\Model\Resolver\Products\DataProvider\Product"/>
+
+    <preference for="Magento\CatalogGraphQl\Model\Resolver\Products\Query\Filter"
+                type="ScandiPWA\CatalogGraphQl\Model\Resolver\Products\Query\Filter"/>
+
+    <preference for="Magento\CatalogGraphQl\Model\Resolver\Products\Query\Search"
+                type="ScandiPWA\CatalogGraphQl\Model\Resolver\Products\Query\Search"/>
+
+    <preference for="Magento\CatalogWidget\Model\Rule\Condition\Product"
+                type="ScandiPWA\CatalogGraphQl\Model\Rule\Condition\Product" />
+
+    <preference for="Magento\CatalogGraphQl\Model\Resolver\LayerFilters"
+                type="ScandiPWA\CatalogGraphQl\Model\Resolver\LayerFilters" />
+
+    <type name="ScandiPWA\CatalogGraphQl\Model\Resolver\Products\Query\Search">
+        <arguments>
+            <argument name="pageSize" xsi:type="object">ScandiPWA\CatalogGraphQl\Model\Search\PageSizeProvider</argument>
+        </arguments>
+    </type>
+
+    <!-- Performance related changes -->
+    <preference for="Magento\ConfigurableProductGraphQl\Model\Resolver\ConfigurableVariant"
+                type="ScandiPWA\CatalogGraphQl\Model\Resolver\ConfigurableVariant" />
+
+    <type name="ScandiPWA\CatalogGraphQl\Model\Resolver\ConfigurableVariant">
+        <arguments>
+            <argument name="variantCollection" xsi:type="object">ScandiPWA\CatalogGraphQl\Model\Variant\Collection</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\CatalogGraphQl\Model\Resolver\Products\DataProvider\Product\CompositeCollectionProcessor">
+        <arguments>
+            <argument name="collectionProcessors" xsi:type="array">
+                <item name="images" xsi:type="object">ScandiPWA\CatalogGraphQl\Model\Resolver\Products\DataProvider\Product\CollectionProcessor\ImagesProcessor</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <preference for="Magento\CatalogGraphQl\Model\Resolver\Product"
+                type="ScandiPWA\CatalogGraphQl\Model\Resolver\Product" />
+
+    <preference for="Magento\GroupedProductGraphQl\Model\Resolver\GroupedItems"
+                type="ScandiPWA\CatalogGraphQl\Model\Resolver\GroupedItems" />
+</config>
